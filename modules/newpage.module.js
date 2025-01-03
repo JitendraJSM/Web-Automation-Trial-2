@@ -1,4 +1,4 @@
-// const examplePage = require("../Classes/examplePage.page.js");
+const examplePage = require("../Classes/examplePage.page.js");
 const GmailSignInPage = require("../Classes/gmailSignInPage.page.js");
 // const okWinHomePage = require("../Classes/okWinHomePage.page.js");
 
@@ -41,28 +41,33 @@ const pageFactory = async (page, pageStack) => {
     }
 
     let currentPageClass = findPageByURLFromArray(importedPages, url);
-    // importedPages.find((p) => url === p.pageURL) ||
-    // importedPages.reduce(
-    //   (max, url) =>
-    //     url.startsWith(p.pageURL) && url.length > max.length ? url : max,
-    //   ""
-    // );
+    if (!currentPageClass)
+      throw new Error(
+        `Page's URL (${url}) is not matched with any imported page.`
+      );
 
+    // let currentPageClass =
+    //   importedPages.find((p) => url === p.pageURL) ||
+    //   importedPages.reduce(
+    //     (max, p) =>
+    //       p.pageURL.startsWith(url) && p.pageURL.length > max.length
+    //         ? p.pageURL
+    //         : max,
+    //     ""
+    //   );
     function findPageByURLFromArray(pageArray, URLtoFind) {
       return (
-        pageArray.find((p) => URLtoFind === p.pageURL) ||
+        pageArray.find((obj) => obj.pageURL === URLtoFind) ||
         pageArray.reduce(
-          (max, URLtoFind) =>
-            URLtoFind.startsWith(p.pageURL) && URLtoFind.length > max.length
-              ? URLtoFind
+          (max, obj) =>
+            obj.pageURL.startsWith(URLtoFind) &&
+            obj.pageURL.length > (max?.pageURL.length || 0)
+              ? obj
               : max,
-          ""
+          false
         )
       );
     }
-    if (!currentPageClass)
-      throw new Error("Page's URL is not matched with any imported page.");
-
     //   3. Create a new instance of the identified page object, push to pageStack and return
     currentPage = new currentPageClass.pageConstructor(page);
     pageStack.push(currentPage);
@@ -73,6 +78,7 @@ const pageFactory = async (page, pageStack) => {
     return currentPage;
   } catch (e) {
     console.log("Error in pageFactory function : ", e.message);
+    console.log(e);
   }
 };
 
