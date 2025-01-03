@@ -1,0 +1,28 @@
+Profile target 1 is for jitendranathswamijsm@gmail.com 
+Profile target 2 is for gatepassc@gmail.com 
+Profile target 3 is for @gmail.com 
+Profile target 4 is for @gmail.com 
+Usually i can select element just as document.querySelector("#input")
+but on this page as given below i can't tell me why ? i think it is because element is in #shadow-root and that is in another element which is in #shadow-root.
+what is best solution to select element in such cases ?
+<body style="background-color: rgb(255, 255, 255)">
+  <iframe id="backgroundImage" src=""></iframe>
+  <ntp-app
+    realbox-is-tall_=""
+    searchbox-width-behavior_="wide"
+    modules-redesigned-enabled_=""
+    wide-modules-enabled_=""
+    style="
+      --ntp-logo-color: inherit;
+      --color-new-tab-page-attribution-foreground: rgba(0, 0, 0, 1);
+      --color-new-tab-page-most-visited-foreground: rgba(0, 0, 0, 1);
+    "
+  >
+  #shadow-root (open)</ntp-app>
+  <script type="module" src="new_tab_page.js"></script>
+  <link rel="stylesheet" href="chrome://resources/css/text_defaults_md.css" />
+  <link rel="stylesheet" href="chrome://theme/colors.css?sets=ui,chrome" />
+  <link rel="stylesheet" href="shared_vars.css" />
+
+  <script type="module" src="./lazy_load.js"></script>
+</body>

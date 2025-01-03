@@ -1,0 +1,8 @@
++ At 15:22:00 on 01/01/2025 
+    - Search for "Sign-up-Gmails" then clicked on first result, so the url opened is https://accounts.google.com/signup/v2/webcreateaccount
+    https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=AeZLP98zQbwPmZENLhy_HsO62FTZDfpr-CH3_-wpONAdeb6Am3UZNxpdpYHDAZsq7cJ7rXUjstXflw&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S237238512%3A1735725143414876&ddm=1
+
+
+    * But the console of devTools return somehthing different i.e.
+        document.URL
+        'chrome://privacy-sandbox-dialog/notice'
