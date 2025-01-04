@@ -1,4 +1,5 @@
 const examplePage = require("../Classes/examplePage.page.js");
+const ianaPage = require("../Classes/ianaPage.page.js");
 const GmailSignInPage = require("../Classes/gmailSignInPage.page.js");
 // const okWinHomePage = require("../Classes/okWinHomePage.page.js");
 
@@ -30,8 +31,8 @@ const pageFactory = async (page, pageStack) => {
       console.log(`-------- PageStack is not empty --------`);
       console.log(`pageStack: ${pageStack.map((p) => p.pageName)}`);
 
-      currentPage = pageStack.find((p) => url === p.pageURL);
-      // currentPage = findPageByURLFromArray(pageStack, url);
+      // currentPage = pageStack.find((p) => url === p.pageURL);
+      currentPage = findPageByURLFromArray(pageStack, url);
       if (currentPage) {
         console.log(
           `Page is already created for this URL: ${currentPage.pageURL}`
@@ -77,8 +78,8 @@ const pageFactory = async (page, pageStack) => {
 
     return currentPage;
   } catch (e) {
-    console.log("Error in pageFactory function : ", e.message);
-    console.log(e);
+    console.log("💣💣💣 Error in pageFactory function : ", e.message);
+    console.log(`💣💣💣 ${e}`);
   }
 };
 
